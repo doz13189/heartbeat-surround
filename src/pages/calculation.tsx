@@ -1,5 +1,5 @@
-import "../app/globals.css";
-import styles from "@/app/page.module.css";
+import "@/app/globals.css";
+import styles from "@/app/index.module.css";
 import Link from "next/link";
 
 export default function Calculation() {

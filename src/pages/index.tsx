@@ -1,19 +1,21 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// import Image from "next/image";
+import "@/app/globals.css";
+import styles from "@/app/index.module.css";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.center}>
-        <Image
+        {/* <Image
           className={styles.logo}
           src="/man-superhero-dark-skin-tone-svgrepo-com.svg"
           alt="hero"
           width={300}
           height={300}
           priority
-        />
+        /> */}
+        <h2>ROOT</h2>
       </div>
 
       <div className={styles.grid}>
@@ -24,7 +26,7 @@ export default function Home() {
           <p>Lets calculate the damage dealt to the opponent.</p>
         </Link>
 
-        <Link href="/calculation" className={styles.card}>
+        <Link href="/character" className={styles.card}>
           <h2>
             Character <span>-&gt;</span>
           </h2>
