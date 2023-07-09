@@ -14,7 +14,7 @@ export default function Calculation() {
   const [buffActionSkillImpactUp, setBuffActionSkillImpactUp] = useState(1);
   const [buffCriticalHitImpactUp, setBuffCriticalHitImpactUp] = useState(1.09);
 
-  const [skillMultiplier, setSkillMultiplier] = useState(3);
+  const [actionSkillMultiplier, setActionSkillMultiplier] = useState(3);
 
   const damageDealtCoefficient = 5;
   const criticalHitMultiplier = 1.5;
@@ -31,7 +31,7 @@ export default function Calculation() {
 
   const nonCriticalActionSkillAttack = Math.ceil(
     nonCriticalNormalAttack *
-      skillMultiplier *
+      actionSkillMultiplier *
       buffSkillImpactUp *
       buffActionSkillImpactUp
   );
@@ -132,7 +132,7 @@ export default function Calculation() {
       <div className={styles.grid}>
         <div>
           <div>
-            <label>buffSkillImpactUp</label>
+            <label>Skill Impact Up</label>
           </div>
           <input
             type="number"
@@ -147,7 +147,7 @@ export default function Calculation() {
 
         <div>
           <div>
-            <label>buffActionSkillImpactUp</label>
+            <label>Action Skill Impact Up</label>
           </div>
           <input
             type="number"
@@ -164,16 +164,16 @@ export default function Calculation() {
       <div className={styles.grid}>
         <div>
           <div>
-            <label>skillMultiplier</label>
+            <label>Action Skill Multiplier</label>
           </div>
           <input
             type="number"
-            id="skillMultiplier"
-            name="skillMultiplier"
+            id="actionSkillMultiplier"
+            name="actionSkillMultiplier"
             required
             size={10}
-            value={skillMultiplier}
-            onChange={(e) => setSkillMultiplier(Number(e.target.value))}
+            value={actionSkillMultiplier}
+            onChange={(e) => setActionSkillMultiplier(Number(e.target.value))}
           />
         </div>
       </div>
