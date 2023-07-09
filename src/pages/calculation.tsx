@@ -4,16 +4,42 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Calculation() {
-  const [basicAbilityPower, setBasicAbilityPower] = useState(0);
-  const [basicAbilityAdvancePower, setBasicAbilityAdvancePower] = useState(0);
+  const [basicAbilityPower, setBasicAbilityPower] = useState(8982);
+  const [basicAbilityAdvancePower, setBasicAbilityAdvancePower] =
+    useState(1800);
   const [memoryPower, setMemoryPower] = useState(0);
-  const [buffPowerUp, setBuffPowerUp] = useState(1);
+  const [buffPowerUp, setBuffPowerUp] = useState(1.2);
+
+  const [buffSkillImpactUp, setBuffSkillImpactUp] = useState(1.1);
+  const [buffActionSkillImpactUp, setBuffActionSkillImpactUp] = useState(1);
+  const [buffCriticalHitImpactUp, setBuffCriticalHitImpactUp] = useState(1.09);
+
+  const [skillMultiplier, setSkillMultiplier] = useState(3);
+
   const damageDealtCoefficient = 5;
+  const criticalHitMultiplier = 1.5;
 
   const nonCriticalNormalAttack = Math.ceil(
     ((basicAbilityPower + basicAbilityAdvancePower + memoryPower) *
       buffPowerUp) /
       damageDealtCoefficient
+  );
+
+  const criticalNormalAttack = Math.ceil(
+    nonCriticalNormalAttack * buffCriticalHitImpactUp * criticalHitMultiplier
+  );
+
+  const nonCriticalActionSkillAttack = Math.ceil(
+    nonCriticalNormalAttack *
+      skillMultiplier *
+      buffSkillImpactUp *
+      buffActionSkillImpactUp
+  );
+
+  const criticalActionSkillAttack = Math.ceil(
+    nonCriticalActionSkillAttack *
+      buffCriticalHitImpactUp *
+      criticalHitMultiplier
   );
 
   return (
@@ -33,6 +59,7 @@ export default function Calculation() {
             name="basicAbilityPower"
             required
             size={10}
+            value={basicAbilityPower}
             onChange={(e) => setBasicAbilityPower(Number(e.target.value))}
           />
         </div>
@@ -47,6 +74,7 @@ export default function Calculation() {
             name="basicAbilityAdvancePower"
             required
             size={10}
+            value={basicAbilityAdvancePower}
             onChange={(e) =>
               setBasicAbilityAdvancePower(Number(e.target.value))
             }
@@ -63,6 +91,7 @@ export default function Calculation() {
             name="memoryPower"
             required
             size={10}
+            value={memoryPower}
             onChange={(e) => setMemoryPower(Number(e.target.value))}
           />
         </div>
@@ -79,15 +108,97 @@ export default function Calculation() {
             name="buffPowerUp"
             required
             size={10}
+            value={buffPowerUp}
             onChange={(e) => setBuffPowerUp(Number(e.target.value))}
+          />
+        </div>
+
+        <div>
+          <div>
+            <label>Critical Hit Impact Up</label>
+          </div>
+          <input
+            type="number"
+            id="buffCriticalHitImpactUp"
+            name="buffCriticalHitImpactUp"
+            required
+            size={10}
+            value={buffCriticalHitImpactUp}
+            onChange={(e) => setBuffCriticalHitImpactUp(Number(e.target.value))}
           />
         </div>
       </div>
 
       <div className={styles.grid}>
         <div>
-          <label>non-critical normal attack</label>
+          <div>
+            <label>buffSkillImpactUp</label>
+          </div>
+          <input
+            type="number"
+            id="buffSkillImpactUp"
+            name="buffSkillImpactUp"
+            required
+            size={10}
+            value={buffSkillImpactUp}
+            onChange={(e) => setBuffSkillImpactUp(Number(e.target.value))}
+          />
+        </div>
+
+        <div>
+          <div>
+            <label>buffActionSkillImpactUp</label>
+          </div>
+          <input
+            type="number"
+            id="buffActionSkillImpactUp"
+            name="buffActionSkillImpactUp"
+            required
+            size={10}
+            value={buffActionSkillImpactUp}
+            onChange={(e) => setBuffActionSkillImpactUp(Number(e.target.value))}
+          />
+        </div>
+      </div>
+
+      <div className={styles.grid}>
+        <div>
+          <div>
+            <label>skillMultiplier</label>
+          </div>
+          <input
+            type="number"
+            id="skillMultiplier"
+            name="skillMultiplier"
+            required
+            size={10}
+            value={skillMultiplier}
+            onChange={(e) => setSkillMultiplier(Number(e.target.value))}
+          />
+        </div>
+      </div>
+
+      <div className={styles.grid}>
+        <div>
+          <label>Non Critical Normal Attack</label>
           <p>{nonCriticalNormalAttack}</p>
+        </div>
+
+        <div>
+          <label>Critical Normal Attack</label>
+          <p>{criticalNormalAttack}</p>
+        </div>
+      </div>
+
+      <div className={styles.grid}>
+        <div>
+          <label>Non Critical Action Skill Attack</label>
+          <p>{nonCriticalActionSkillAttack}</p>
+        </div>
+
+        <div>
+          <label>Critical Action Skill Attack</label>
+          <p>{criticalActionSkillAttack}</p>
         </div>
       </div>
 
