@@ -1,5 +1,7 @@
 import "@/app/globals.css";
 import styles from "@/app/index.module.css";
+import AbilityInputBox from "@/components/AbilityInputBox";
+import AbilityDisplayBox from "@/components/AbilityInputBox copy";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -49,157 +51,83 @@ export default function Calculation() {
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <div>
-            <label>Power</label>
-          </div>
-          <input
-            type="number"
-            id="basicAbilityPower"
-            name="basicAbilityPower"
-            required
-            size={10}
-            value={basicAbilityPower}
-            onChange={(e) => setBasicAbilityPower(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Power"
+          value={basicAbilityPower}
+          setValue={setBasicAbilityPower}
+        />
 
-        <div>
-          <div>
-            <label>Advance Power</label>
-          </div>
-          <input
-            type="number"
-            id="basicAbilityAdvancePower"
-            name="basicAbilityAdvancePower"
-            required
-            size={10}
-            value={basicAbilityAdvancePower}
-            onChange={(e) =>
-              setBasicAbilityAdvancePower(Number(e.target.value))
-            }
-          />
-        </div>
+        <AbilityInputBox
+          label="Advance Power"
+          value={basicAbilityAdvancePower}
+          setValue={setBasicAbilityAdvancePower}
+        />
 
-        <div>
-          <div>
-            <label>Memory Power</label>
-          </div>
-          <input
-            type="number"
-            id="memoryPower"
-            name="memoryPower"
-            required
-            size={10}
-            value={memoryPower}
-            onChange={(e) => setMemoryPower(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Memory Power"
+          value={memoryPower}
+          setValue={setMemoryPower}
+        />
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <div>
-            <label>Power Up</label>
-          </div>
-          <input
-            type="number"
-            id="buffPowerUp"
-            name="buffPowerUp"
-            required
-            size={10}
-            value={buffPowerUp}
-            onChange={(e) => setBuffPowerUp(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Power Up"
+          value={buffPowerUp}
+          setValue={setBuffPowerUp}
+        />
 
-        <div>
-          <div>
-            <label>Critical Hit Impact Up</label>
-          </div>
-          <input
-            type="number"
-            id="buffCriticalHitImpactUp"
-            name="buffCriticalHitImpactUp"
-            required
-            size={10}
-            value={buffCriticalHitImpactUp}
-            onChange={(e) => setBuffCriticalHitImpactUp(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Critical Hit Impact Up"
+          value={buffCriticalHitImpactUp}
+          setValue={setBuffCriticalHitImpactUp}
+        />
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <div>
-            <label>Skill Impact Up</label>
-          </div>
-          <input
-            type="number"
-            id="buffSkillImpactUp"
-            name="buffSkillImpactUp"
-            required
-            size={10}
-            value={buffSkillImpactUp}
-            onChange={(e) => setBuffSkillImpactUp(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Skill Impact Up"
+          value={buffSkillImpactUp}
+          setValue={setBuffSkillImpactUp}
+        />
 
-        <div>
-          <div>
-            <label>Action Skill Impact Up</label>
-          </div>
-          <input
-            type="number"
-            id="buffActionSkillImpactUp"
-            name="buffActionSkillImpactUp"
-            required
-            size={10}
-            value={buffActionSkillImpactUp}
-            onChange={(e) => setBuffActionSkillImpactUp(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Action Skill Impact Up"
+          value={buffActionSkillImpactUp}
+          setValue={setBuffActionSkillImpactUp}
+        />
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <div>
-            <label>Action Skill Multiplier</label>
-          </div>
-          <input
-            type="number"
-            id="actionSkillMultiplier"
-            name="actionSkillMultiplier"
-            required
-            size={10}
-            value={actionSkillMultiplier}
-            onChange={(e) => setActionSkillMultiplier(Number(e.target.value))}
-          />
-        </div>
+        <AbilityInputBox
+          label="Action Skill Multiplier"
+          value={actionSkillMultiplier}
+          setValue={setActionSkillMultiplier}
+        />
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <label>Non Critical Normal Attack</label>
-          <p>{nonCriticalNormalAttack}</p>
-        </div>
+        <AbilityDisplayBox
+          label="Non Critical Normal Attack"
+          value={nonCriticalNormalAttack}
+        />
 
-        <div>
-          <label>Critical Normal Attack</label>
-          <p>{criticalNormalAttack}</p>
-        </div>
+        <AbilityDisplayBox
+          label="Critical Normal Attack"
+          value={criticalNormalAttack}
+        />
       </div>
 
       <div className={styles.grid}>
-        <div>
-          <label>Non Critical Action Skill Attack</label>
-          <p>{nonCriticalActionSkillAttack}</p>
-        </div>
+        <AbilityDisplayBox
+          label="Non Critical Action Skill Attack"
+          value={nonCriticalActionSkillAttack}
+        />
 
-        <div>
-          <label>Critical Action Skill Attack</label>
-          <p>{criticalActionSkillAttack}</p>
-        </div>
+        <AbilityDisplayBox
+          label="Critical Action Skill Attack"
+          value={criticalActionSkillAttack}
+        />
       </div>
 
       <div className={styles.grid}>
