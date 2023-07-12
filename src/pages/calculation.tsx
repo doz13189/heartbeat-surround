@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import styles from "@/app/index.module.css";
 import AbilityInputBox from "@/components/AbilityInputBox";
-import AbilityDisplayBox from "@/components/AbilityInputBox copy";
+import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import Link from "next/link";
 import { useState } from "react";
 
