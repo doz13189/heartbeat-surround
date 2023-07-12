@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import styles from "@/app/index.module.css";
+import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import { getCharacter } from "@/lib/character";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
@@ -16,7 +17,10 @@ export async function getServerSideProps() {
 export default function Character({
   allCharactersData,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
-  const dabi = allCharactersData[0].dabi;
+  const advancePower = 1800;
+  const characterKeys = Object.keys(allCharactersData[0]) as Array<
+    keyof (typeof allCharactersData)[0]
+  >;
 
   return (
     <main className={styles.main}>
@@ -24,22 +28,32 @@ export default function Character({
         <h1>Character</h1>
       </div>
 
-      <div className={styles.grid}>
-        <div>
-          <label>Sub Name</label>
-          <p>{String(dabi.subName)}</p>
-        </div>
+      {characterKeys.map((key) => (
+        <div className={styles.grid} key={key}>
+          <AbilityDisplayBox
+            label="Main Name"
+            value={allCharactersData[0][key].mainName}
+          />
 
-        <div>
-          <label>Power</label>
-          <p>{String(dabi.basicAbility.power)}</p>
-        </div>
+          <AbilityDisplayBox
+            label="Sub Name"
+            value={allCharactersData[0][key].subName}
+          />
 
-        <div>
-          <label>Advance Power</label>
-          <p>{String(dabi.advancePower.power)}</p>
+          <AbilityDisplayBox
+            label="Power"
+            value={allCharactersData[0][key].basicAbility.power}
+          />
+
+          <AbilityDisplayBox
+            label="Advance Power"
+            value={
+              Number(allCharactersData[0][key].basicAbility.power) +
+              advancePower
+            }
+          />
         </div>
-      </div>
+      ))}
 
       <div className={styles.grid}>
         <Link href="/" className={styles.card}>

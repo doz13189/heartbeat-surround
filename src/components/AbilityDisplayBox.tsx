@@ -2,7 +2,7 @@ import "@/app/globals.css";
 
 type AbilityDisplayBoxProps = {
   label: string;
-  value: number;
+  value: number | string;
 };
 
 export default function AbilityDisplayBox({

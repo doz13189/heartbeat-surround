@@ -1,12 +1,38 @@
 [
   {
-    "dabi": {
+    "1185005": {
+      "mainName": "Dabi",
       "subName": "Blue Flames of Hell",
       "basicAbility": {
         "power": 8982
-      },
-      "advancePower": {
-        "power": 8982
+      }
+    },
+    "1185003": {
+      "mainName": "Dabi",
+      "subName": "Burn Everything",
+      "basicAbility": {
+        "power": 10211
+      }
+    },
+    "1181001": {
+      "mainName": "Tomura Shigaraki",
+      "subName": "Evil Unbound",
+      "basicAbility": {
+        "power": 9889
+      }
+    },
+    "1181003": {
+      "mainName": "Tomura Shigaraki",
+      "subName": "Awakening",
+      "basicAbility": {
+        "power": 10276
+      }
+    },
+    "1181005": {
+      "mainName": "Tomura Shigaraki",
+      "subName": "Perdition",
+      "basicAbility": {
+        "power": 10211
       }
     }
   }
