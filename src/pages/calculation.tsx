@@ -1,5 +1,3 @@
-import "@/app/globals.css";
-import styles from "@/app/index.module.css";
 import AbilityInputBox from "@/components/AbilityInputBox";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import Link from "next/link";
@@ -45,12 +43,12 @@ export default function Calculation() {
   );
 
   return (
-    <main className={styles.main}>
-      <div className={styles.center}>
+    <main>
+      <div>
         <h1>Damage Calculation</h1>
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityInputBox
           label="Power"
           value={basicAbilityPower}
@@ -70,7 +68,7 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityInputBox
           label="Power Up"
           value={buffPowerUp}
@@ -84,7 +82,7 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityInputBox
           label="Skill Impact Up"
           value={buffSkillImpactUp}
@@ -98,7 +96,7 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityInputBox
           label="Action Skill Multiplier"
           value={actionSkillMultiplier}
@@ -106,7 +104,7 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityDisplayBox
           label="Non Critical Normal Attack"
           value={nonCriticalNormalAttack}
@@ -118,7 +116,7 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div>
         <AbilityDisplayBox
           label="Non Critical Action Skill Attack"
           value={nonCriticalActionSkillAttack}
@@ -130,8 +128,8 @@ export default function Calculation() {
         />
       </div>
 
-      <div className={styles.grid}>
-        <Link href="/" className={styles.card}>
+      <div>
+        <Link href="/">
           <h2>
             Back to home<span>-&gt;</span>
           </h2>
