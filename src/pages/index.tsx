@@ -18,7 +18,7 @@ export default function Index() {
         <Box>
           <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
             <Heading color="teal.400">
-              <LinkOverlay href="/character">Calculation</LinkOverlay>
+              <LinkOverlay href="/character">Character</LinkOverlay>
             </Heading>
             <Text>Lets see the characters.</Text>
           </LinkBox>
