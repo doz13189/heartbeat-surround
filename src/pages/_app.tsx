@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Heading color="whiteAlpha.900">Root</Heading>
           </Box>
           <Text color="whiteAlpha.900" fontSize="xs">
-            © 2023 doz13189@gmail.com
+            © 2023 dozo13189@gmail.com
           </Text>
         </Flex>
       </Box>
