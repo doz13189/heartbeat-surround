@@ -1,4 +1,6 @@
+import { Box, Input } from "@chakra-ui/react";
 import { SetStateAction } from "react";
+import { Text } from "./parts/Text";
 
 type AbilityInputBoxProps = {
   label: string;
@@ -12,19 +14,17 @@ export default function AbilityInputBox({
   setValue,
 }: AbilityInputBoxProps) {
   return (
-    <div>
-      <div>
-        <label>{label}</label>
-      </div>
-      <input
+    <Box p={1}>
+      <Text>{label}</Text>
+      <Input
         type="number"
         id="basicAbilityPower"
         name="basicAbilityPower"
         required
-        size={10}
+        size={"sm"}
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
       />
-    </div>
+    </Box>
   );
 }

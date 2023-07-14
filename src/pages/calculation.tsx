@@ -1,7 +1,8 @@
 import AbilityInputBox from "@/components/AbilityInputBox";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
-import Link from "next/link";
 import { useState } from "react";
+import { Heading } from "@/components/parts/Heading";
+import { Box, Divider, LinkBox, LinkOverlay } from "@chakra-ui/react";
 
 export default function Calculation() {
   const [basicAbilityPower, setBasicAbilityPower] = useState(8982);
@@ -44,67 +45,64 @@ export default function Calculation() {
 
   return (
     <main>
-      <div>
-        <h1>Damage Calculation</h1>
-      </div>
+      <Box p={2}>
+        <Box p={2}>
+          <Heading color={"blackAlpha.600"}>Damage Calculation</Heading>
+        </Box>
+        <Box>
+          <Divider colorScheme={"teal"} />
+        </Box>
+      </Box>
 
-      <div>
-        <AbilityInputBox
-          label="Power"
-          value={basicAbilityPower}
-          setValue={setBasicAbilityPower}
-        />
+      <AbilityInputBox
+        label="Power"
+        value={basicAbilityPower}
+        setValue={setBasicAbilityPower}
+      />
 
-        <AbilityInputBox
-          label="Advance Power"
-          value={basicAbilityAdvancePower}
-          setValue={setBasicAbilityAdvancePower}
-        />
+      <AbilityInputBox
+        label="Advance Power"
+        value={basicAbilityAdvancePower}
+        setValue={setBasicAbilityAdvancePower}
+      />
 
-        <AbilityInputBox
-          label="Memory Power"
-          value={memoryPower}
-          setValue={setMemoryPower}
-        />
-      </div>
+      <AbilityInputBox
+        label="Memory Power"
+        value={memoryPower}
+        setValue={setMemoryPower}
+      />
 
-      <div>
-        <AbilityInputBox
-          label="Power Up"
-          value={buffPowerUp}
-          setValue={setBuffPowerUp}
-        />
+      <AbilityInputBox
+        label="Power Up"
+        value={buffPowerUp}
+        setValue={setBuffPowerUp}
+      />
 
-        <AbilityInputBox
-          label="Critical Hit Impact Up"
-          value={buffCriticalHitImpactUp}
-          setValue={setBuffCriticalHitImpactUp}
-        />
-      </div>
+      <AbilityInputBox
+        label="Critical Hit Impact Up"
+        value={buffCriticalHitImpactUp}
+        setValue={setBuffCriticalHitImpactUp}
+      />
 
-      <div>
-        <AbilityInputBox
-          label="Skill Impact Up"
-          value={buffSkillImpactUp}
-          setValue={setBuffSkillImpactUp}
-        />
+      <AbilityInputBox
+        label="Skill Impact Up"
+        value={buffSkillImpactUp}
+        setValue={setBuffSkillImpactUp}
+      />
 
-        <AbilityInputBox
-          label="Action Skill Impact Up"
-          value={buffActionSkillImpactUp}
-          setValue={setBuffActionSkillImpactUp}
-        />
-      </div>
+      <AbilityInputBox
+        label="Action Skill Impact Up"
+        value={buffActionSkillImpactUp}
+        setValue={setBuffActionSkillImpactUp}
+      />
 
-      <div>
-        <AbilityInputBox
-          label="Action Skill Multiplier"
-          value={actionSkillMultiplier}
-          setValue={setActionSkillMultiplier}
-        />
-      </div>
+      <AbilityInputBox
+        label="Action Skill Multiplier"
+        value={actionSkillMultiplier}
+        setValue={setActionSkillMultiplier}
+      />
 
-      <div>
+      <Box p={1} pt={3} pb={3}>
         <AbilityDisplayBox
           label="Non Critical Normal Attack"
           value={nonCriticalNormalAttack}
@@ -114,9 +112,7 @@ export default function Calculation() {
           label="Critical Normal Attack"
           value={criticalNormalAttack}
         />
-      </div>
 
-      <div>
         <AbilityDisplayBox
           label="Non Critical Action Skill Attack"
           value={nonCriticalActionSkillAttack}
@@ -126,15 +122,13 @@ export default function Calculation() {
           label="Critical Action Skill Attack"
           value={criticalActionSkillAttack}
         />
-      </div>
+      </Box>
 
-      <div>
-        <Link href="/">
-          <h2>
-            Back to home<span>-&gt;</span>
-          </h2>
-        </Link>
-      </div>
+      <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
+        <Heading color="teal.400">
+          <LinkOverlay href="/">Back to home</LinkOverlay>
+        </Heading>
+      </LinkBox>
     </main>
   );
 }

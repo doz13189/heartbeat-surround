@@ -6,7 +6,7 @@ type Props = TextProps & {
 };
 export const Text: FC<Props> = ({ children, ...props }) => {
   return (
-    <LibText fontSize="md" m="2" {...props}>
+    <LibText fontSize="sm" {...props}>
       {children}
     </LibText>
   );
