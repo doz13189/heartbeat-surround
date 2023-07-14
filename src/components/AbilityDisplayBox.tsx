@@ -1,5 +1,3 @@
-import "@/app/globals.css";
-
 type AbilityDisplayBoxProps = {
   label: string;
   value: number | string;

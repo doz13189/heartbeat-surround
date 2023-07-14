@@ -1,5 +1,3 @@
-import "@/app/globals.css";
-import styles from "@/app/index.module.css";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import { getCharacter } from "@/lib/character";
 import { InferGetStaticPropsType } from "next";
@@ -23,18 +21,17 @@ export default function Character({
   >;
 
   return (
-    <main className={styles.main}>
-      <div className={styles.center}>
+    <main>
+      <div>
         <h1>Character</h1>
       </div>
 
       {characterKeys.map((key) => (
-        <div className={styles.grid} key={key}>
+        <div key={key}>
           <AbilityDisplayBox
             label="Main Name"
             value={allCharactersData[0][key].mainName}
           />
-
           <AbilityDisplayBox
             label="Sub Name"
             value={allCharactersData[0][key].subName}
@@ -55,8 +52,8 @@ export default function Character({
         </div>
       ))}
 
-      <div className={styles.grid}>
-        <Link href="/" className={styles.card}>
+      <div>
+        <Link href="/">
           <h2>
             Back to home<span>-&gt;</span>
           </h2>

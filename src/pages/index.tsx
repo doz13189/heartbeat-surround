@@ -1,38 +1,29 @@
 // import Image from "next/image";
-import "@/app/globals.css";
-import styles from "@/app/index.module.css";
-import Link from "next/link";
+import { Heading } from "@/components/parts/Heading";
+import { Text } from "@/components/parts/Text";
+import { Box, LinkBox, LinkOverlay, Grid } from "@chakra-ui/react";
 
-export default function Home() {
+export default function Index() {
   return (
-    <main className={styles.main}>
-      <div className={styles.center}>
-        {/* <Image
-          className={styles.logo}
-          src="/man-superhero-dark-skin-tone-svgrepo-com.svg"
-          alt="hero"
-          width={300}
-          height={300}
-          priority
-        /> */}
-        <h2>ROOT</h2>
-      </div>
-
-      <div className={styles.grid}>
-        <Link href="/calculation" className={styles.card}>
-          <h2>
-            Calculation<span>-&gt;</span>
-          </h2>
-          <p>Lets calculate the damage dealt to the opponent.</p>
-        </Link>
-
-        <Link href="/character" className={styles.card}>
-          <h2>
-            Character <span>-&gt;</span>
-          </h2>
-          <p>Lets see the characters.</p>
-        </Link>
-      </div>
+    <main>
+      <Grid gap={4}>
+        <Box pt={4}>
+          <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
+            <Heading color="teal.400">
+              <LinkOverlay href="/calculation">Calculation</LinkOverlay>
+            </Heading>
+            <Text>Lets calculate the damage dealt to the opponent.</Text>
+          </LinkBox>
+        </Box>
+        <Box>
+          <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
+            <Heading color="teal.400">
+              <LinkOverlay href="/character">Calculation</LinkOverlay>
+            </Heading>
+            <Text>Lets see the characters.</Text>
+          </LinkBox>
+        </Box>
+      </Grid>
     </main>
   );
 }

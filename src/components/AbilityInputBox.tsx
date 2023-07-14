@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import { SetStateAction } from "react";
 
 type AbilityInputBoxProps = {
