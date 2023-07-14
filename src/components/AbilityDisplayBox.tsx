@@ -1,3 +1,6 @@
+import { Flex, Spacer } from "@chakra-ui/react";
+import { Text } from "./parts/Text";
+
 type AbilityDisplayBoxProps = {
   label: string;
   value: number | string;
@@ -8,11 +11,10 @@ export default function AbilityDisplayBox({
   value,
 }: AbilityDisplayBoxProps) {
   return (
-    <div>
-      <div>
-        <label>{label}</label>
-      </div>
-      <p>{value}</p>
-    </div>
+    <Flex>
+      <Text>{label}</Text>
+      <Spacer />
+      <Text>{value}</Text>
+    </Flex>
   );
 }

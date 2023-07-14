@@ -1,5 +1,7 @@
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
+import { Heading } from "@/components/parts/Heading";
 import { getCharacter } from "@/lib/character";
+import { Box, Divider, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
@@ -22,12 +24,17 @@ export default function Character({
 
   return (
     <main>
-      <div>
-        <h1>Character</h1>
-      </div>
+      <Box p={2}>
+        <Box p={2}>
+          <Heading color={"blackAlpha.600"}>Character</Heading>
+        </Box>
+        <Box>
+          <Divider colorScheme={"teal"} />
+        </Box>
+      </Box>
 
       {characterKeys.map((key) => (
-        <div key={key}>
+        <Box p={2} key={key}>
           <AbilityDisplayBox
             label="Main Name"
             value={allCharactersData[0][key].mainName}
@@ -49,16 +56,14 @@ export default function Character({
               advancePower
             }
           />
-        </div>
+        </Box>
       ))}
 
-      <div>
-        <Link href="/">
-          <h2>
-            Back to home<span>-&gt;</span>
-          </h2>
-        </Link>
-      </div>
+      <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
+        <Heading color="teal.400">
+          <LinkOverlay href="/">Back to home</LinkOverlay>
+        </Heading>
+      </LinkBox>
     </main>
   );
 }
