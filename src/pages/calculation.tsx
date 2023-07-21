@@ -47,88 +47,108 @@ export default function Calculation() {
     <main>
       <Box p={2}>
         <Box p={2}>
-          <Heading color={"blackAlpha.600"}>Damage Calculation</Heading>
+          <Heading color={"#F8784A"}>Damage Calculation</Heading>
         </Box>
+      </Box>
+
+      <Box
+        backgroundColor={"blackAlpha.100"}
+        borderColor={"blackAlpha.600"}
+        rounded="lg"
+        p={4}
+        mb={4}
+      >
+        <AbilityInputBox
+          label="Power"
+          value={basicAbilityPower}
+          setValue={setBasicAbilityPower}
+        />
+
+        <AbilityInputBox
+          label="Advance Power"
+          value={basicAbilityAdvancePower}
+          setValue={setBasicAbilityAdvancePower}
+        />
+
+        <AbilityInputBox
+          label="Memory Power"
+          value={memoryPower}
+          setValue={setMemoryPower}
+        />
+
+        <AbilityInputBox
+          label="Power Up"
+          value={buffPowerUp}
+          setValue={setBuffPowerUp}
+        />
+
+        <AbilityInputBox
+          label="Critical Hit Impact Up"
+          value={buffCriticalHitImpactUp}
+          setValue={setBuffCriticalHitImpactUp}
+        />
+
+        <AbilityInputBox
+          label="Skill Impact Up"
+          value={buffSkillImpactUp}
+          setValue={setBuffSkillImpactUp}
+        />
+
+        <AbilityInputBox
+          label="Action Skill Impact Up"
+          value={buffActionSkillImpactUp}
+          setValue={setBuffActionSkillImpactUp}
+        />
+
+        <AbilityInputBox
+          label="Action Skill Multiplier"
+          value={actionSkillMultiplier}
+          setValue={setActionSkillMultiplier}
+        />
+      </Box>
+
+      <Box
+        backgroundColor={"blackAlpha.100"}
+        borderColor={"blackAlpha.600"}
+        rounded="lg"
+        p={4}
+      >
         <Box>
-          <Divider colorScheme={"teal"} />
+          <AbilityDisplayBox
+            label="Non Critical Normal Attack"
+            value={nonCriticalNormalAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Critical Normal Attack"
+            value={criticalNormalAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Non Critical Action Skill Attack"
+            value={nonCriticalActionSkillAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Critical Action Skill Attack"
+            value={criticalActionSkillAttack}
+          />
         </Box>
       </Box>
 
-      <AbilityInputBox
-        label="Power"
-        value={basicAbilityPower}
-        setValue={setBasicAbilityPower}
-      />
-
-      <AbilityInputBox
-        label="Advance Power"
-        value={basicAbilityAdvancePower}
-        setValue={setBasicAbilityAdvancePower}
-      />
-
-      <AbilityInputBox
-        label="Memory Power"
-        value={memoryPower}
-        setValue={setMemoryPower}
-      />
-
-      <AbilityInputBox
-        label="Power Up"
-        value={buffPowerUp}
-        setValue={setBuffPowerUp}
-      />
-
-      <AbilityInputBox
-        label="Critical Hit Impact Up"
-        value={buffCriticalHitImpactUp}
-        setValue={setBuffCriticalHitImpactUp}
-      />
-
-      <AbilityInputBox
-        label="Skill Impact Up"
-        value={buffSkillImpactUp}
-        setValue={setBuffSkillImpactUp}
-      />
-
-      <AbilityInputBox
-        label="Action Skill Impact Up"
-        value={buffActionSkillImpactUp}
-        setValue={setBuffActionSkillImpactUp}
-      />
-
-      <AbilityInputBox
-        label="Action Skill Multiplier"
-        value={actionSkillMultiplier}
-        setValue={setActionSkillMultiplier}
-      />
-
-      <Box p={1} pt={3} pb={3}>
-        <AbilityDisplayBox
-          label="Non Critical Normal Attack"
-          value={nonCriticalNormalAttack}
-        />
-
-        <AbilityDisplayBox
-          label="Critical Normal Attack"
-          value={criticalNormalAttack}
-        />
-
-        <AbilityDisplayBox
-          label="Non Critical Action Skill Attack"
-          value={nonCriticalActionSkillAttack}
-        />
-
-        <AbilityDisplayBox
-          label="Critical Action Skill Attack"
-          value={criticalActionSkillAttack}
-        />
+      <Box color={"64C8EF"} pt={4}>
+        <LinkBox
+          borderWidth="2px"
+          rounded="lg"
+          borderColor={"blackAlpha.600"}
+          backgroundColor={"#FAC00F"}
+          p={3}
+        >
+          <Heading pt={2} pb={2}>
+            <LinkOverlay href="/">Back to home</LinkOverlay>
+          </Heading>
+        </LinkBox>
       </Box>
-
-      <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
-        <Heading color="teal.400">
-          <LinkOverlay href="/">Back to home</LinkOverlay>
-        </Heading>
-      </LinkBox>
     </main>
   );
 }
