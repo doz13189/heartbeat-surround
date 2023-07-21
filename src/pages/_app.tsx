@@ -11,12 +11,7 @@ import {
 import { Container } from "@chakra-ui/react";
 import { Heading } from "@/components/parts/Heading";
 import { Text } from "@/components/parts/Text";
-import { Rampart_One, RocknRoll_One } from "next/font/google";
-
-// const rampartOne = Rampart_One({
-//   weight: ["400"],
-//   subsets: ["cyrillic"],
-// });
+import { RocknRoll_One } from "next/font/google";
 
 const rampartOne = RocknRoll_One({
   weight: ["400"],
@@ -46,10 +41,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <Flex justifyContent="center" alignItems="center">
               <Box p={1}>
                 <LinkOverlay href="/" color="blackAlpha.800" fontSize={"md"}>
-                  Root
+                  Heartbeat Surround
                 </LinkOverlay>
               </Box>
-              <Text color="blackAlpha.800">© 2023 doz13189@gmail.com</Text>
             </Flex>
           </Heading>
         </LinkBox>
@@ -58,7 +52,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Container>
         <Component {...pageProps} />
       </Container>
-      {/* </main> */}
     </ChakraProvider>
   );
 }
