@@ -7,17 +7,31 @@ export default function Index() {
   return (
     <main>
       <Grid gap={4}>
-        <Box pt={4}>
-          <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
-            <Heading color="teal.400">
-              <LinkOverlay href="/calculation">Calculation</LinkOverlay>
+        <Box color={"64C8EF"} pt={4}>
+          <LinkBox
+            borderWidth="2px"
+            rounded="lg"
+            borderColor={"blackAlpha.600"}
+            backgroundColor={"#FAC00F"}
+            p={3}
+          >
+            <Heading pt={2} pb={2}>
+              <LinkOverlay href="/calculation" color="blackAlpha.800">
+                Calculation
+              </LinkOverlay>
             </Heading>
             <Text>Lets calculate the damage dealt to the opponent.</Text>
           </LinkBox>
         </Box>
-        <Box>
-          <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
-            <Heading color="teal.400">
+        <Box color={"64C8EF"}>
+          <LinkBox
+            borderWidth="2px"
+            rounded="lg"
+            borderColor={"blackAlpha.600"}
+            backgroundColor={"#FAC00F"}
+            p={3}
+          >
+            <Heading pt={2} pb={2}>
               <LinkOverlay href="/character">Character</LinkOverlay>
             </Heading>
             <Text>Lets see the characters.</Text>

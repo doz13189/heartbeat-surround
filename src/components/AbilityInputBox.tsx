@@ -14,12 +14,14 @@ export default function AbilityInputBox({
   setValue,
 }: AbilityInputBoxProps) {
   return (
-    <Box p={1}>
+    <Box pt={1} pb={1}>
       <Text>{label}</Text>
       <Input
         type="number"
         id="basicAbilityPower"
         name="basicAbilityPower"
+        backgroundColor={"white"}
+        rounded={"lg"}
         required
         size={"sm"}
         value={value}

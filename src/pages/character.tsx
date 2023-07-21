@@ -26,44 +26,57 @@ export default function Character({
     <main>
       <Box p={2}>
         <Box p={2}>
-          <Heading color={"blackAlpha.600"}>Character</Heading>
+          <Heading color={"#F8784A"}>Character</Heading>
         </Box>
-        <Box>
-          <Divider colorScheme={"teal"} />
-        </Box>
+        <Box>{/* <Divider colorScheme={"teal"} /> */}</Box>
       </Box>
 
-      {characterKeys.map((key) => (
-        <Box p={2} key={key}>
-          <AbilityDisplayBox
-            label="Main Name"
-            value={allCharactersData[0][key].mainName}
-          />
-          <AbilityDisplayBox
-            label="Sub Name"
-            value={allCharactersData[0][key].subName}
-          />
+      <Box
+        backgroundColor={"blackAlpha.100"}
+        borderColor={"blackAlpha.600"}
+        rounded="lg"
+        pt={4}
+      >
+        {characterKeys.map((key) => (
+          <Box p={2} key={key}>
+            <AbilityDisplayBox
+              label="Main Name"
+              value={allCharactersData[0][key].mainName}
+            />
+            <AbilityDisplayBox
+              label="Sub Name"
+              value={allCharactersData[0][key].subName}
+            />
 
-          <AbilityDisplayBox
-            label="Power"
-            value={allCharactersData[0][key].basicAbility.power}
-          />
+            <AbilityDisplayBox
+              label="Power"
+              value={allCharactersData[0][key].basicAbility.power}
+            />
 
-          <AbilityDisplayBox
-            label="Advance Power"
-            value={
-              Number(allCharactersData[0][key].basicAbility.power) +
-              advancePower
-            }
-          />
-        </Box>
-      ))}
+            <AbilityDisplayBox
+              label="Advance Power"
+              value={
+                Number(allCharactersData[0][key].basicAbility.power) +
+                advancePower
+              }
+            />
+          </Box>
+        ))}
+      </Box>
 
-      <LinkBox borderWidth="1px" rounded="md" p={2} m={1}>
-        <Heading color="teal.400">
-          <LinkOverlay href="/">Back to home</LinkOverlay>
-        </Heading>
-      </LinkBox>
+      <Box color={"64C8EF"} pt={4}>
+        <LinkBox
+          borderWidth="2px"
+          rounded="lg"
+          borderColor={"blackAlpha.600"}
+          backgroundColor={"#FAC00F"}
+          p={3}
+        >
+          <Heading pt={2} pb={2}>
+            <LinkOverlay href="/">Back to home</LinkOverlay>
+          </Heading>
+        </LinkBox>
+      </Box>
     </main>
   );
 }
