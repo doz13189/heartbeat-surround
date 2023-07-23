@@ -10,6 +10,7 @@ import {
 import { Container } from "@chakra-ui/react";
 import { Heading } from "@/components/parts/Heading";
 import { RocknRoll_One } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const rampartOne = RocknRoll_One({
   weight: ["400"],
@@ -49,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Container>
         <Component {...pageProps} />
+        <Analytics />
       </Container>
     </ChakraProvider>
   );
