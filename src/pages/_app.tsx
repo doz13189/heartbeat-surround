@@ -5,12 +5,10 @@ import {
   Flex,
   LinkBox,
   LinkOverlay,
-  Spacer,
   extendTheme,
 } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 import { Heading } from "@/components/parts/Heading";
-import { Text } from "@/components/parts/Text";
 import { RocknRoll_One } from "next/font/google";
 
 const rampartOne = RocknRoll_One({
