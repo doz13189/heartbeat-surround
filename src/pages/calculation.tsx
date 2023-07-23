@@ -2,7 +2,13 @@ import AbilityInputBox from "@/components/AbilityInputBox";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import { useState } from "react";
 import { Heading } from "@/components/parts/Heading";
-import { Box, Divider, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Box, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import {
+  calculateCriticalActionSkillAttack,
+  calculateCriticalNormalAttack,
+  calculateNonCriticalActionSkillAttack,
+  calculateNonCriticalNormalAttack,
+} from "@/lib/calculatinLogic";
 
 export default function Calculation() {
   const [basicAbilityPower, setBasicAbilityPower] = useState(8982);
@@ -17,30 +23,28 @@ export default function Calculation() {
 
   const [actionSkillMultiplier, setActionSkillMultiplier] = useState(3);
 
-  const damageDealtCoefficient = 5;
-  const criticalHitMultiplier = 1.5;
-
-  const nonCriticalNormalAttack = Math.ceil(
-    ((basicAbilityPower + basicAbilityAdvancePower + memoryPower) *
-      buffPowerUp) /
-      damageDealtCoefficient
+  const nonCriticalNormalAttack = calculateNonCriticalNormalAttack(
+    basicAbilityPower,
+    basicAbilityAdvancePower,
+    memoryPower,
+    buffPowerUp
   );
 
-  const criticalNormalAttack = Math.ceil(
-    nonCriticalNormalAttack * buffCriticalHitImpactUp * criticalHitMultiplier
+  const criticalNormalAttack = calculateCriticalNormalAttack(
+    nonCriticalNormalAttack,
+    buffCriticalHitImpactUp
   );
 
-  const nonCriticalActionSkillAttack = Math.ceil(
-    nonCriticalNormalAttack *
-      actionSkillMultiplier *
-      buffSkillImpactUp *
-      buffActionSkillImpactUp
+  const nonCriticalActionSkillAttack = calculateNonCriticalActionSkillAttack(
+    nonCriticalNormalAttack,
+    actionSkillMultiplier,
+    buffSkillImpactUp,
+    buffActionSkillImpactUp
   );
 
-  const criticalActionSkillAttack = Math.ceil(
-    nonCriticalActionSkillAttack *
-      buffCriticalHitImpactUp *
-      criticalHitMultiplier
+  const criticalActionSkillAttack = calculateCriticalActionSkillAttack(
+    nonCriticalActionSkillAttack,
+    buffCriticalHitImpactUp
   );
 
   return (
@@ -115,22 +119,22 @@ export default function Calculation() {
       >
         <Box>
           <AbilityDisplayBox
-            label="Non Critical Normal Attack"
+            label="Normal Attack (Non Critical)"
             value={nonCriticalNormalAttack}
           />
 
           <AbilityDisplayBox
-            label="Critical Normal Attack"
+            label="Normal Attack (Critical)"
             value={criticalNormalAttack}
           />
 
           <AbilityDisplayBox
-            label="Non Critical Action Skill Attack"
+            label="Action Skill Attack (Non Critical)"
             value={nonCriticalActionSkillAttack}
           />
 
           <AbilityDisplayBox
-            label="Critical Action Skill Attack"
+            label="Action Skill Attack (Critical)"
             value={criticalActionSkillAttack}
           />
         </Box>

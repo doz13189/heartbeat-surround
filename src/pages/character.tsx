@@ -1,9 +1,13 @@
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
+import DamageDisplayBox from "@/components/DamageDisplayBox";
 import { Heading } from "@/components/parts/Heading";
+import {
+  calculateNonCriticalActionSkillAttack,
+  calculateNonCriticalNormalAttack,
+} from "@/lib/calculatinLogic";
 import { getCharacter } from "@/lib/character";
-import { Box, Divider, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Box, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { InferGetStaticPropsType } from "next";
-import Link from "next/link";
 
 export async function getServerSideProps() {
   const allCharactersData = getCharacter();
@@ -28,41 +32,138 @@ export default function Character({
         <Box p={2}>
           <Heading color={"#F8784A"}>Character</Heading>
         </Box>
-        <Box>{/* <Divider colorScheme={"teal"} /> */}</Box>
       </Box>
 
-      <Box
-        backgroundColor={"blackAlpha.100"}
-        borderColor={"blackAlpha.600"}
-        rounded="lg"
-        pt={4}
-      >
-        {characterKeys.map((key) => (
-          <Box p={2} key={key}>
-            <AbilityDisplayBox
-              label="Main Name"
-              value={allCharactersData[0][key].mainName}
-            />
-            <AbilityDisplayBox
-              label="Sub Name"
-              value={allCharactersData[0][key].subName}
-            />
+      {characterKeys.map((key) => (
+        <Box
+          backgroundColor={"blackAlpha.100"}
+          borderColor={"blackAlpha.600"}
+          rounded="lg"
+          p={2}
+          m={2}
+          key={key}
+        >
+          <AbilityDisplayBox
+            label="Main Name"
+            value={allCharactersData[0][key].mainName}
+          />
+          <AbilityDisplayBox
+            label="Sub Name"
+            value={allCharactersData[0][key].subName}
+          />
 
-            <AbilityDisplayBox
-              label="Power"
-              value={allCharactersData[0][key].basicAbility.power}
-            />
+          <AbilityDisplayBox
+            label="Power"
+            value={allCharactersData[0][key].basicAbility.power}
+          />
 
-            <AbilityDisplayBox
-              label="Advance Power"
-              value={
-                Number(allCharactersData[0][key].basicAbility.power) +
-                advancePower
-              }
-            />
-          </Box>
-        ))}
-      </Box>
+          <AbilityDisplayBox
+            label="Advance Power"
+            value={
+              Number(allCharactersData[0][key].basicAbility.power) +
+              advancePower
+            }
+          />
+
+          <DamageDisplayBox
+            label="Normal"
+            value={calculateNonCriticalNormalAttack(
+              allCharactersData[0][key].basicAbility.power,
+              advancePower,
+              0,
+              allCharactersData[0][key].autoSkillBuff.powerUp
+            )}
+          />
+
+          <DamageDisplayBox
+            label="Action Skill 1 Damage"
+            value={calculateNonCriticalActionSkillAttack(
+              calculateNonCriticalNormalAttack(
+                allCharactersData[0][key].basicAbility.power,
+                advancePower,
+                0,
+                1
+              ),
+              allCharactersData[0][key].actionSkill.one.multiplier,
+              allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+              allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+            )}
+          />
+
+          <DamageDisplayBox
+            label="Action Skill 1 Total Damage"
+            value={
+              allCharactersData[0][key].actionSkill.one.attackType === "all"
+                ? calculateNonCriticalActionSkillAttack(
+                    calculateNonCriticalNormalAttack(
+                      allCharactersData[0][key].basicAbility.power,
+                      advancePower,
+                      0,
+                      1
+                    ),
+                    allCharactersData[0][key].actionSkill.one.multiplier,
+                    allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+                    allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+                  ) * 3
+                : calculateNonCriticalActionSkillAttack(
+                    calculateNonCriticalNormalAttack(
+                      allCharactersData[0][key].basicAbility.power,
+                      advancePower,
+                      0,
+                      1
+                    ),
+                    allCharactersData[0][key].actionSkill.one.multiplier,
+                    allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+                    allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+                  )
+            }
+          />
+
+          <DamageDisplayBox
+            label="Action Skill 2 Damage"
+            value={calculateNonCriticalActionSkillAttack(
+              calculateNonCriticalNormalAttack(
+                allCharactersData[0][key].basicAbility.power,
+                advancePower,
+                0,
+                1
+              ),
+              allCharactersData[0][key].actionSkill.two.multiplier,
+              allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+              allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+            )}
+          />
+
+          <DamageDisplayBox
+            label="Action Skill 2 Total Damage"
+            value={
+              allCharactersData[0][key].actionSkill.two.attackType === "all"
+                ? calculateNonCriticalActionSkillAttack(
+                    calculateNonCriticalNormalAttack(
+                      allCharactersData[0][key].basicAbility.power,
+                      advancePower,
+                      0,
+                      1
+                    ),
+                    allCharactersData[0][key].actionSkill.two.multiplier,
+                    allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+                    allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+                  ) * 3
+                : calculateNonCriticalActionSkillAttack(
+                    calculateNonCriticalNormalAttack(
+                      allCharactersData[0][key].basicAbility.power,
+                      advancePower,
+                      0,
+                      1
+                    ),
+                    allCharactersData[0][key].actionSkill.two.multiplier,
+                    allCharactersData[0][key].autoSkillBuff.skillImpactUp,
+                    allCharactersData[0][key].autoSkillBuff.actionSkillImpactUp
+                  )
+            }
+          />
+        </Box>
+      ))}
 
       <Box color={"64C8EF"} pt={4}>
         <LinkBox
