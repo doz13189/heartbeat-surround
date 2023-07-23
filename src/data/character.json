@@ -5,6 +5,27 @@
       "subName": "Blue Flames of Hell",
       "basicAbility": {
         "power": 8982
+      },
+      "actionSkill": {
+        "one": {
+          "multiplier": 4,
+          "attackType": "single",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        },
+        "two": {
+          "multiplier": 3,
+          "attackType": "all",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        }
+      },
+      "autoSkillBuff": {
+        "powerUp": 1,
+        "skillImpactUp": 1.5,
+        "actionSkillImpactUp": 1
       }
     },
     "1185003": {
@@ -12,20 +33,27 @@
       "subName": "Burn Everything",
       "basicAbility": {
         "power": 10211
-      }
-    },
-    "1181001": {
-      "mainName": "Tomura Shigaraki",
-      "subName": "Evil Unbound",
-      "basicAbility": {
-        "power": 9889
-      }
-    },
-    "1181003": {
-      "mainName": "Tomura Shigaraki",
-      "subName": "Awakening",
-      "basicAbility": {
-        "power": 10276
+      },
+      "actionSkill": {
+        "one": {
+          "multiplier": 2.75,
+          "attackType": "all",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        },
+        "two": {
+          "multiplier": 3,
+          "attackType": "all",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        }
+      },
+      "autoSkillBuff": {
+        "powerUp": 1,
+        "skillImpactUp": 1.5,
+        "actionSkillImpactUp": 1
       }
     },
     "1181005": {
@@ -33,6 +61,27 @@
       "subName": "Perdition",
       "basicAbility": {
         "power": 10211
+      },
+      "actionSkill": {
+        "one": {
+          "multiplier": 3.75,
+          "attackType": "single",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        },
+        "two": {
+          "multiplier": 3,
+          "attackType": "all",
+          "powerUp": 1,
+          "skillImpactUp": 1,
+          "actionSkillImpactUp": 1
+        }
+      },
+      "autoSkillBuff": {
+        "powerUp": 1.4,
+        "skillImpactUp": 1.4,
+        "actionSkillImpactUp": 1
       }
     }
   }

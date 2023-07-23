@@ -113,14 +113,14 @@ export default function Index() {
             p={4}
           >
             <Text>
-              If you have any questions, please contact me on my{" "}
+              If you have any questions, please contact me on{" "}
               <Link
                 color="#FAC00F"
                 href={"https://twitter.com/doz13189"}
                 textDecoration={"underline"}
                 isExternal
               >
-                Twitter account
+                my Twitter account
               </Link>
               .
             </Text>
