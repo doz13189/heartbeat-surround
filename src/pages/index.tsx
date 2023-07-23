@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import { Heading } from "@/components/parts/Heading";
 import { Text } from "@/components/parts/Text";
 import { Box, LinkBox, LinkOverlay, Grid, Link } from "@chakra-ui/react";
