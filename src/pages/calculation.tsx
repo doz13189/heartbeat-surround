@@ -1,8 +1,7 @@
 import AbilityInputBox from "@/components/AbilityInputBox";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
-import { useState } from "react";
 import { Heading } from "@/components/parts/Heading";
-import { Box, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Box, LinkBox, LinkOverlay, useNumberInput } from "@chakra-ui/react";
 import {
   calculateCriticalActionSkillAttack,
   calculateCriticalNormalAttack,
@@ -12,17 +11,113 @@ import {
 import { Text } from "@/components/parts/Text";
 
 export default function Calculation() {
-  const [basicAbilityPower, setBasicAbilityPower] = useState(9000);
-  const [basicAbilityAdvancePower, setBasicAbilityAdvancePower] =
-    useState(1800);
-  const [memoryPower, setMemoryPower] = useState(0);
-  const [buffPowerUp, setBuffPowerUp] = useState(1.2);
+  const {
+    getInputProps: getBasicAbilityPowerProps,
+    getIncrementButtonProps: getIncrementBasicAbilityPowerProps,
+    getDecrementButtonProps: getDecrementBasicAbilityPowerProps,
+  } = useNumberInput({
+    defaultValue: 9_000,
+    step: 1,
+    min: 1,
+    max: 20_000,
+    precision: 0,
+  });
+  const basicAbilityPower = getBasicAbilityPowerProps()["aria-valuenow"];
 
-  const [buffSkillImpactUp, setBuffSkillImpactUp] = useState(1.1);
-  const [buffActionSkillImpactUp, setBuffActionSkillImpactUp] = useState(1);
-  const [buffCriticalHitImpactUp, setBuffCriticalHitImpactUp] = useState(1.09);
+  const {
+    getInputProps: getBasicAbilityAdvancePowerProps,
+    getIncrementButtonProps: getIncrementBasicAbilityAdvancePowerProps,
+    getDecrementButtonProps: getDecrementBasicAbilityAdvancePowerProps,
+  } = useNumberInput({
+    defaultValue: 1800,
+    step: 1,
+    min: 1,
+    max: 1800,
+    precision: 0,
+  });
+  const basicAbilityAdvancePower =
+    getBasicAbilityAdvancePowerProps()["aria-valuenow"];
 
-  const [actionSkillMultiplier, setActionSkillMultiplier] = useState(3);
+  const {
+    getInputProps: getMemoryPowerProps,
+    getIncrementButtonProps: getIncrementMemoryPowerProps,
+    getDecrementButtonProps: getDecrementMemoryPowerProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 10_000,
+    precision: 0,
+  });
+  const memoryPower = getMemoryPowerProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getActionSkillMultiplierProps,
+    getIncrementButtonProps: getIncrementActionSkillMultiplierProps,
+    getDecrementButtonProps: getDecrementActionSkillMultiplierProps,
+  } = useNumberInput({
+    defaultValue: 300,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+  });
+  const actionSkillMultiplier =
+    getActionSkillMultiplierProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffPowerUpProps,
+    getIncrementButtonProps: getIncrementBuffPowerUpProps,
+    getDecrementButtonProps: getDecrementBuffPowerUpProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+  });
+  const buffPowerUp = getBuffPowerUpProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffSkillImpactUpProps,
+    getIncrementButtonProps: getIncrementBuffSkillImpactUpProps,
+    getDecrementButtonProps: getDecrementBuffSkillImpactUpProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+  });
+  const buffSkillImpactUp = getBuffSkillImpactUpProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffActionSkillImpactUpProps,
+    getIncrementButtonProps: getIncrementBuffActionSkillImpactUpProps,
+    getDecrementButtonProps: getDecrementBuffActionSkillImpactUpProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+  });
+  const buffActionSkillImpactUp =
+    getBuffActionSkillImpactUpProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffCriticalHitImpactUpProps,
+    getIncrementButtonProps: getIncrementBuffCriticalHitImpactUpProps,
+    getDecrementButtonProps: getDecrementBuffCriticalHitImpactUpProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+  });
+  const buffCriticalHitImpactUp =
+    getBuffCriticalHitImpactUpProps()["aria-valuenow"];
 
   const nonCriticalNormalAttack = calculateNonCriticalNormalAttack(
     basicAbilityPower,
@@ -66,23 +161,23 @@ export default function Calculation() {
         <Box pb={1} pt={1}>
           <Heading color={"blackAlpha.700"}>Character Status</Heading>
         </Box>
-
         <AbilityInputBox
           label="Power"
-          value={basicAbilityPower}
-          setValue={setBasicAbilityPower}
+          input={getBasicAbilityPowerProps()}
+          inc={getIncrementBasicAbilityPowerProps()}
+          dec={getDecrementBasicAbilityPowerProps()}
         />
-
         <AbilityInputBox
           label="Advance Power"
-          value={basicAbilityAdvancePower}
-          setValue={setBasicAbilityAdvancePower}
+          input={getBasicAbilityAdvancePowerProps()}
+          inc={getIncrementBasicAbilityAdvancePowerProps()}
+          dec={getDecrementBasicAbilityAdvancePowerProps()}
         />
-
         <AbilityInputBox
           label="Memory Power"
-          value={memoryPower}
-          setValue={setMemoryPower}
+          input={getMemoryPowerProps()}
+          inc={getIncrementMemoryPowerProps()}
+          dec={getDecrementMemoryPowerProps()}
         />
       </Box>
 
@@ -98,9 +193,10 @@ export default function Calculation() {
         </Box>
 
         <AbilityInputBox
-          label="Action Skill Multiplier"
-          value={actionSkillMultiplier}
-          setValue={setActionSkillMultiplier}
+          label="Action Skill Multiplier (%)"
+          input={getActionSkillMultiplierProps()}
+          inc={getIncrementActionSkillMultiplierProps()}
+          dec={getDecrementActionSkillMultiplierProps()}
         />
       </Box>
 
@@ -116,27 +212,31 @@ export default function Calculation() {
         </Box>
 
         <AbilityInputBox
-          label="Power Up"
-          value={buffPowerUp}
-          setValue={setBuffPowerUp}
+          label="Power Up (%)"
+          input={getBuffPowerUpProps()}
+          inc={getIncrementBuffPowerUpProps()}
+          dec={getDecrementBuffPowerUpProps()}
         />
 
         <AbilityInputBox
-          label="Skill Impact Up"
-          value={buffSkillImpactUp}
-          setValue={setBuffSkillImpactUp}
+          label="Skill Impact Up (%)"
+          input={getBuffSkillImpactUpProps()}
+          inc={getIncrementBuffSkillImpactUpProps()}
+          dec={getDecrementBuffSkillImpactUpProps()}
         />
 
         <AbilityInputBox
-          label="Action Skill Impact Up"
-          value={buffActionSkillImpactUp}
-          setValue={setBuffActionSkillImpactUp}
+          label="Action Skill Impact Up (%)"
+          input={getBuffActionSkillImpactUpProps()}
+          inc={getIncrementBuffActionSkillImpactUpProps()}
+          dec={getDecrementBuffActionSkillImpactUpProps()}
         />
 
         <AbilityInputBox
-          label="Critical Hit Impact Up"
-          value={buffCriticalHitImpactUp}
-          setValue={setBuffCriticalHitImpactUp}
+          label="Critical Hit Impact Up (%)"
+          input={getBuffCriticalHitImpactUpProps()}
+          inc={getIncrementBuffCriticalHitImpactUpProps()}
+          dec={getDecrementBuffCriticalHitImpactUpProps()}
         />
       </Box>
 
@@ -185,41 +285,6 @@ export default function Calculation() {
         <Text color={"blackAlpha.700"}>{"First turn in the arena"}</Text>
       </Box>
 
-      <Box
-        backgroundColor={"orange.100"}
-        borderColor={"orange.600"}
-        rounded="lg"
-        p={4}
-      >
-        <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Result</Heading>
-        </Box>
-
-        <Box>
-          <Box pt={1} pb={1} px={4}>
-            <AbilityDisplayBox
-              label="Normal Attack (Non Critical)"
-              value={nonCriticalNormalAttack}
-            />
-
-            <AbilityDisplayBox
-              label="Normal Attack (Critical)"
-              value={criticalNormalAttack}
-            />
-
-            <AbilityDisplayBox
-              label="Skill Attack (Non Critical)"
-              value={nonCriticalActionSkillAttack}
-            />
-
-            <AbilityDisplayBox
-              label="Skill Attack (Critical)"
-              value={criticalActionSkillAttack}
-            />
-          </Box>
-        </Box>
-      </Box>
-
       <Box color={"64C8EF"} pt={4}>
         <LinkBox
           borderWidth="2px"
@@ -232,6 +297,42 @@ export default function Calculation() {
             <LinkOverlay href="/">Back to home</LinkOverlay>
           </Heading>
         </LinkBox>
+      </Box>
+
+      <Box height={"375px"}></Box>
+      <Box
+        backgroundColor={"orange.100"}
+        borderColor={"#FAC00F"}
+        borderWidth={"5px"}
+        // rounded="lg"
+        p={4}
+        position="fixed"
+        textAlign="center"
+        bottom="0"
+        left="0"
+        width="100%"
+      >
+        <Box pt={1} pb={1} px={4}>
+          <AbilityDisplayBox
+            label="Normal Attack (Non Critical)"
+            value={nonCriticalNormalAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Normal Attack (Critical)"
+            value={criticalNormalAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Action Skill Attack (Non Critical)"
+            value={nonCriticalActionSkillAttack}
+          />
+
+          <AbilityDisplayBox
+            label="Action Skill Attack (Critical)"
+            value={criticalActionSkillAttack}
+          />
+        </Box>
       </Box>
     </main>
   );
