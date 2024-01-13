@@ -1,33 +1,41 @@
-import { Box, Input } from "@chakra-ui/react";
-import { SetStateAction } from "react";
+import { Box, Button, HStack, Input } from "@chakra-ui/react";
 import { Text } from "./parts/Text";
 
 type AbilityInputBoxProps = {
   label: string;
-  value: number;
-  setValue: (value: SetStateAction<number>) => void;
+  input: any;
+  inc: any;
+  dec: any;
 };
 
 export default function AbilityInputBox({
   label,
-  value,
-  setValue,
+  input,
+  inc,
+  dec,
 }: AbilityInputBoxProps) {
   return (
     <Box pt={1} pb={1} px={4}>
       <Text color={"blackAlpha.700"}>{label}</Text>
-      <Input
-        type="number"
-        id="basicAbilityPower"
-        name="basicAbilityPower"
-        backgroundColor={"white"}
-        color={"blackAlpha.700"}
-        rounded={"lg"}
-        required
-        size={"sm"}
-        value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-      />
+      <HStack>
+        <Input
+          type="number"
+          id={label}
+          name={label}
+          backgroundColor={"white"}
+          color={"blackAlpha.700"}
+          rounded={"lg"}
+          required
+          size={"sm"}
+          {...input}
+        />
+        <Button backgroundColor={"white"} {...dec}>
+          -
+        </Button>
+        <Button backgroundColor={"white"} {...inc}>
+          +
+        </Button>
+      </HStack>
     </Box>
   );
 }
