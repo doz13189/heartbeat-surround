@@ -21,6 +21,7 @@ export default function Calculation() {
     min: 1,
     max: 20_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const basicAbilityPower = getBasicAbilityPowerProps()["aria-valuenow"];
 
@@ -34,6 +35,7 @@ export default function Calculation() {
     min: 1,
     max: 1800,
     precision: 0,
+    focusInputOnChange: false,
   });
   const basicAbilityAdvancePower =
     getBasicAbilityAdvancePowerProps()["aria-valuenow"];
@@ -48,6 +50,7 @@ export default function Calculation() {
     min: 0,
     max: 10_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const memoryPower = getMemoryPowerProps()["aria-valuenow"];
 
@@ -61,6 +64,7 @@ export default function Calculation() {
     min: 0,
     max: 1_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const actionSkillMultiplier =
     getActionSkillMultiplierProps()["aria-valuenow"];
@@ -75,6 +79,7 @@ export default function Calculation() {
     min: 0,
     max: 1_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const buffPowerUp = getBuffPowerUpProps()["aria-valuenow"];
 
@@ -88,6 +93,7 @@ export default function Calculation() {
     min: 0,
     max: 1_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const buffSkillImpactUp = getBuffSkillImpactUpProps()["aria-valuenow"];
 
@@ -101,6 +107,7 @@ export default function Calculation() {
     min: 0,
     max: 1_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const buffActionSkillImpactUp =
     getBuffActionSkillImpactUpProps()["aria-valuenow"];
@@ -115,6 +122,7 @@ export default function Calculation() {
     min: 0,
     max: 1_000,
     precision: 0,
+    focusInputOnChange: false,
   });
   const buffCriticalHitImpactUp =
     getBuffCriticalHitImpactUpProps()["aria-valuenow"];
