@@ -1,4 +1,4 @@
-import { Flex, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
 import { Text } from "./parts/Text";
 
 type AbilityDisplayBoxProps = {
