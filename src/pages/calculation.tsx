@@ -11,7 +11,7 @@ import {
 } from "@/lib/calculatinLogic";
 
 export default function Calculation() {
-  const [basicAbilityPower, setBasicAbilityPower] = useState(8982);
+  const [basicAbilityPower, setBasicAbilityPower] = useState(9000);
   const [basicAbilityAdvancePower, setBasicAbilityAdvancePower] =
     useState(1800);
   const [memoryPower, setMemoryPower] = useState(0);
@@ -79,17 +79,33 @@ export default function Calculation() {
           value={memoryPower}
           setValue={setMemoryPower}
         />
+      </Box>
 
+      <Box
+        backgroundColor={"blackAlpha.100"}
+        borderColor={"blackAlpha.600"}
+        rounded="lg"
+        p={4}
+        mb={4}
+      >
+        <AbilityInputBox
+          label="Action Skill Multiplier"
+          value={actionSkillMultiplier}
+          setValue={setActionSkillMultiplier}
+        />
+      </Box>
+
+      <Box
+        backgroundColor={"blackAlpha.100"}
+        borderColor={"blackAlpha.600"}
+        rounded="lg"
+        p={4}
+        mb={4}
+      >
         <AbilityInputBox
           label="Power Up"
           value={buffPowerUp}
           setValue={setBuffPowerUp}
-        />
-
-        <AbilityInputBox
-          label="Critical Hit Impact Up"
-          value={buffCriticalHitImpactUp}
-          setValue={setBuffCriticalHitImpactUp}
         />
 
         <AbilityInputBox
@@ -105,9 +121,9 @@ export default function Calculation() {
         />
 
         <AbilityInputBox
-          label="Action Skill Multiplier"
-          value={actionSkillMultiplier}
-          setValue={setActionSkillMultiplier}
+          label="Critical Hit Impact Up"
+          value={buffCriticalHitImpactUp}
+          setValue={setBuffCriticalHitImpactUp}
         />
       </Box>
 
