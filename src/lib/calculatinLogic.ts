@@ -4,16 +4,29 @@ export const calculateNonCriticalNormalAttack = (
   basicAbilityPower: number | undefined,
   basicAbilityAdvancePower: number | undefined,
   memoryPower: number | undefined,
-  buffPowerUp: number | undefined
+  buffPowerUp: number | undefined,
+  BuffDefenseUp: number | undefined,
+  BuffDamageCut: number | undefined,
+  BuffDefenseDown: number | undefined
 ) => {
   if (basicAbilityPower === undefined) return 0;
   if (basicAbilityAdvancePower === undefined) return 0;
   if (memoryPower === undefined) return 0;
   if (buffPowerUp === undefined) return 0;
+  if (BuffDefenseUp === undefined) return 0;
+  if (BuffDamageCut === undefined) return 0;
+  if (BuffDefenseDown === undefined) return 0;
+
+  const BuffDefense =
+    BuffDefenseUp - BuffDefenseDown <= -50
+      ? -50
+      : BuffDefenseUp - BuffDefenseDown;
 
   return Math.ceil(
-    ((basicAbilityPower + basicAbilityAdvancePower + memoryPower) *
+    ((((basicAbilityPower + basicAbilityAdvancePower + memoryPower) *
       (buffPowerUp / 100 + 1)) /
+      (BuffDefense / 100 + 1)) *
+      (1 - BuffDamageCut / 100)) /
       DAMAGE_DEALT_COEFFICIENT
   );
 };

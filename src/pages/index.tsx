@@ -243,8 +243,8 @@ export default function Index() {
                 <Alert status="warning">
                   <Text>
                     通常攻撃の与ダメージ = パワー合計値 * パワーアップ /
-                    (ディフェンスアップ + ディフェンスダウン) / ダメージカット /
-                    謎の定数
+                    (ディフェンスアップ + ディフェンスダウン) * (1 -
+                    ダメージカット) / 謎の定数
                   </Text>
                 </Alert>
               </Box>
@@ -254,8 +254,8 @@ export default function Index() {
                 <Alert status="warning">
                   <Text>
                     アクションスキル威力の与ダメージ = 通常攻撃の与ダメージ *
-                    アクションスキルダメージ率 * スキル威力 *
-                    アクションスキル威力
+                    アクションスキルダメージ率 * スキル威力アップ *
+                    アクションスキル威力アップ
                   </Text>
                 </Alert>
               </Box>

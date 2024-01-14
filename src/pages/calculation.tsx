@@ -133,11 +133,56 @@ export default function Calculation() {
   const buffCriticalHitImpactUp =
     getBuffCriticalHitImpactUpProps()["aria-valuenow"];
 
+  const {
+    getInputProps: getBuffDefenseUpProps,
+    getIncrementButtonProps: getIncrementBuffDefenseUpProps,
+    getDecrementButtonProps: getDecrementBuffDefenseUpProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+    focusInputOnChange: false,
+  });
+  const BuffDefenseUp = getBuffDefenseUpProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffDamageCutProps,
+    getIncrementButtonProps: getIncrementBuffDamageCutProps,
+    getDecrementButtonProps: getDecrementBuffDamageCutProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 100,
+    precision: 0,
+    focusInputOnChange: false,
+  });
+  const BuffDamageCut = getBuffDamageCutProps()["aria-valuenow"];
+
+  const {
+    getInputProps: getBuffDefenseDownProps,
+    getIncrementButtonProps: getIncrementBuffDefenseDownProps,
+    getDecrementButtonProps: getDecrementBuffDefenseDownProps,
+  } = useNumberInput({
+    defaultValue: 0,
+    step: 1,
+    min: 0,
+    max: 1_000,
+    precision: 0,
+    focusInputOnChange: false,
+  });
+  const BuffDefenseDown = getBuffDefenseDownProps()["aria-valuenow"];
+
   const nonCriticalNormalAttack = calculateNonCriticalNormalAttack(
     basicAbilityPower,
     basicAbilityAdvancePower,
     memoryPower,
-    buffPowerUp
+    buffPowerUp,
+    BuffDefenseUp,
+    BuffDamageCut,
+    BuffDefenseDown
   );
 
   const criticalNormalAttack = calculateCriticalNormalAttack(
@@ -265,10 +310,19 @@ export default function Calculation() {
           <Heading color={"blackAlpha.700"}>敵のバフ</Heading>
         </Box>
 
-        <Text color={"blackAlpha.700"}>
-          {"ディフェンスアップ（近日実装予定）"}
-        </Text>
-        <Text color={"blackAlpha.700"}>{"ダメージカット（近日実装予定）"}</Text>
+        <AbilityInputBox
+          label="ディフェンスアップ (%)"
+          input={getBuffDefenseUpProps()}
+          inc={getIncrementBuffDefenseUpProps()}
+          dec={getDecrementBuffDefenseUpProps()}
+        />
+
+        <AbilityInputBox
+          label="ダメージカット (%)"
+          input={getBuffDamageCutProps()}
+          inc={getIncrementBuffDamageCutProps()}
+          dec={getDecrementBuffDamageCutProps()}
+        />
       </Box>
 
       <Box
@@ -282,9 +336,12 @@ export default function Calculation() {
           <Heading color={"blackAlpha.700"}>敵のデバフ</Heading>
         </Box>
 
-        <Text color={"blackAlpha.700"}>
-          {"ディフェンスダウン（近日実装予定）"}
-        </Text>
+        <AbilityInputBox
+          label="デフェンスダウン (%)"
+          input={getBuffDefenseDownProps()}
+          inc={getIncrementBuffDefenseDownProps()}
+          dec={getDecrementBuffDefenseDownProps()}
+        />
       </Box>
 
       {/* <Box
@@ -333,7 +390,7 @@ export default function Calculation() {
           <AbilityDisplayBox label="通常攻撃" value={nonCriticalNormalAttack} />
 
           <AbilityDisplayBox
-            label="通常攻撃 (クリティカルヒット)"
+            label="通常攻撃 (クリティカル)"
             value={criticalNormalAttack}
           />
 
@@ -343,7 +400,7 @@ export default function Calculation() {
           />
 
           <AbilityDisplayBox
-            label="アクションスキル (クリティカルヒット)"
+            label="アクションスキル (クリティカル)"
             value={criticalActionSkillAttack}
           />
         </Box>
