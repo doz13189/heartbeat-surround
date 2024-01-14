@@ -1,7 +1,13 @@
 import AbilityInputBox from "@/components/AbilityInputBox";
 import AbilityDisplayBox from "@/components/AbilityDisplayBox";
 import { Heading } from "@/components/parts/Heading";
-import { Box, LinkBox, LinkOverlay, useNumberInput } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  LinkBox,
+  LinkOverlay,
+  useNumberInput,
+} from "@chakra-ui/react";
 import {
   calculateCriticalActionSkillAttack,
   calculateCriticalNormalAttack,
@@ -147,7 +153,7 @@ export default function Calculation() {
     <main>
       <Box p={2}>
         <Box p={2}>
-          <Heading color={"#F8784A"}>Damage Calculation</Heading>
+          <Heading color={"#F8784A"}>与ダメージ計算</Heading>
         </Box>
       </Box>
 
@@ -159,22 +165,22 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Character Status</Heading>
+          <Heading color={"blackAlpha.700"}>キャラクターステータス</Heading>
         </Box>
         <AbilityInputBox
-          label="Power"
+          label="パワー"
           input={getBasicAbilityPowerProps()}
           inc={getIncrementBasicAbilityPowerProps()}
           dec={getDecrementBasicAbilityPowerProps()}
         />
         <AbilityInputBox
-          label="Advance Power"
+          label="アドバンスパワー"
           input={getBasicAbilityAdvancePowerProps()}
           inc={getIncrementBasicAbilityAdvancePowerProps()}
           dec={getDecrementBasicAbilityAdvancePowerProps()}
         />
         <AbilityInputBox
-          label="Memory Power"
+          label="メモリーパワー"
           input={getMemoryPowerProps()}
           inc={getIncrementMemoryPowerProps()}
           dec={getDecrementMemoryPowerProps()}
@@ -189,11 +195,11 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Skill Information</Heading>
+          <Heading color={"blackAlpha.700"}>スキル情報</Heading>
         </Box>
 
         <AbilityInputBox
-          label="Action Skill Multiplier (%)"
+          label="アクションスキルダメージ率 (%)"
           input={getActionSkillMultiplierProps()}
           inc={getIncrementActionSkillMultiplierProps()}
           dec={getDecrementActionSkillMultiplierProps()}
@@ -208,32 +214,32 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Ally Buff</Heading>
+          <Heading color={"blackAlpha.700"}>味方のバフ</Heading>
         </Box>
 
         <AbilityInputBox
-          label="Power Up (%)"
+          label="パワーアップ (%)"
           input={getBuffPowerUpProps()}
           inc={getIncrementBuffPowerUpProps()}
           dec={getDecrementBuffPowerUpProps()}
         />
 
         <AbilityInputBox
-          label="Skill Impact Up (%)"
+          label="スキル威力アップ (%)"
           input={getBuffSkillImpactUpProps()}
           inc={getIncrementBuffSkillImpactUpProps()}
           dec={getDecrementBuffSkillImpactUpProps()}
         />
 
         <AbilityInputBox
-          label="Action Skill Impact Up (%)"
+          label="アクションスキル威力アップ (%)"
           input={getBuffActionSkillImpactUpProps()}
           inc={getIncrementBuffActionSkillImpactUpProps()}
           dec={getDecrementBuffActionSkillImpactUpProps()}
         />
 
         <AbilityInputBox
-          label="Critical Hit Impact Up (%)"
+          label="クリティカル威力アップ (%)"
           input={getBuffCriticalHitImpactUpProps()}
           inc={getIncrementBuffCriticalHitImpactUpProps()}
           dec={getDecrementBuffCriticalHitImpactUpProps()}
@@ -248,11 +254,13 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Enemy Buff</Heading>
+          <Heading color={"blackAlpha.700"}>敵のバフ</Heading>
         </Box>
 
-        <Text color={"blackAlpha.700"}>{"Defense Up"}</Text>
-        <Text color={"blackAlpha.700"}>{"Damage Cut"}</Text>
+        <Text color={"blackAlpha.700"}>
+          {"ディフェンスアップ（近日実装予定）"}
+        </Text>
+        <Text color={"blackAlpha.700"}>{"ダメージカット（近日実装予定）"}</Text>
       </Box>
 
       <Box
@@ -263,13 +271,15 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Enemy DeBuff</Heading>
+          <Heading color={"blackAlpha.700"}>敵のデバフ</Heading>
         </Box>
 
-        <Text color={"blackAlpha.700"}>{"Defense Down"}</Text>
+        <Text color={"blackAlpha.700"}>
+          {"ディフェンスダウン（近日実装予定）"}
+        </Text>
       </Box>
 
-      <Box
+      {/* <Box
         backgroundColor={"blackAlpha.100"}
         borderColor={"blackAlpha.600"}
         rounded="lg"
@@ -277,13 +287,14 @@ export default function Calculation() {
         mb={4}
       >
         <Box pb={1} pt={1}>
-          <Heading color={"blackAlpha.700"}>Others</Heading>
+          <Heading color={"blackAlpha.700"}>その他</Heading>
         </Box>
 
-        <Text color={"blackAlpha.700"}>{"Skill Chain"}</Text>
-        <Text color={"blackAlpha.700"}>{"Weakness"}</Text>
-        <Text color={"blackAlpha.700"}>{"First turn in the arena"}</Text>
-      </Box>
+        
+        <Text color={"blackAlpha.700"}>{"スキルチェイン"}</Text>
+        <Text color={"blackAlpha.700"}>{"弱点"}</Text>
+        <Text color={"blackAlpha.700"}>{"アリーナ1ターン目"}</Text>
+      </Box> */}
 
       <Box color={"64C8EF"} pt={4}>
         <LinkBox
@@ -294,7 +305,7 @@ export default function Calculation() {
           p={3}
         >
           <Heading pt={2} pb={2}>
-            <LinkOverlay href="/">Back to home</LinkOverlay>
+            <LinkOverlay href="/">ホームへ</LinkOverlay>
           </Heading>
         </LinkBox>
       </Box>
@@ -304,32 +315,27 @@ export default function Calculation() {
         backgroundColor={"orange.100"}
         borderColor={"#FAC00F"}
         borderWidth={"5px"}
-        // rounded="lg"
         p={4}
         position="fixed"
-        textAlign="center"
         bottom="0"
         left="0"
         width="100%"
       >
         <Box pt={1} pb={1} px={4}>
-          <AbilityDisplayBox
-            label="Normal Attack (Non Critical)"
-            value={nonCriticalNormalAttack}
-          />
+          <AbilityDisplayBox label="通常攻撃" value={nonCriticalNormalAttack} />
 
           <AbilityDisplayBox
-            label="Normal Attack (Critical)"
+            label="通常攻撃 (クリティカルヒット)"
             value={criticalNormalAttack}
           />
 
           <AbilityDisplayBox
-            label="Action Skill Attack (Non Critical)"
+            label="アクションスキル"
             value={nonCriticalActionSkillAttack}
           />
 
           <AbilityDisplayBox
-            label="Action Skill Attack (Critical)"
+            label="アクションスキル (クリティカルヒット)"
             value={criticalActionSkillAttack}
           />
         </Box>
