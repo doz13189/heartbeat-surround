@@ -50,6 +50,25 @@ export default function Character({
         </Box>
       </Box>
 
+      <Box p={2}>
+        <Box
+          backgroundColor={"blackAlpha.100"}
+          borderColor={"blackAlpha.600"}
+          rounded="lg"
+          p={4}
+        >
+          <Text>
+            疑問)ディフェンスダウンを入れているのに思っているより与ダメージが出ないのですが、どうすればいいですか？
+          </Text>
+          <Box pt={2} pb={2}>
+            <Text>
+              回答)
+              ディフェンスダウンは最大50%までしか与ダメージには適用されません。
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+
       <Box color={"64C8EF"} pt={4}>
         <LinkBox
           borderWidth="2px"
