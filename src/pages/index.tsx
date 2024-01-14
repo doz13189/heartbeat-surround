@@ -88,7 +88,9 @@ export default function Index() {
         <Box p={2}>
           <Box>
             <Box p={2}>
-              <Heading color={"#F8784A"}>使い方</Heading>
+              <Heading color={"#F8784A"}>
+                与ダメージ計算に関する基礎知識
+              </Heading>
             </Box>
           </Box>
 
