@@ -88,9 +88,7 @@ export default function Index() {
         <Box p={2}>
           <Box>
             <Box p={2}>
-              <Heading color={"#F8784A"}>
-                与ダメージ計算に関する基礎知識
-              </Heading>
+              <Heading color={"#F8784A"}>与ダメージ計算方法</Heading>
             </Box>
           </Box>
 
@@ -116,7 +114,7 @@ export default function Index() {
             </Box>
 
             <Box>
-              <Box pt={1} pb={1}>
+              <Box pt={4} pb={2}>
                 <Text color={"#F8784A"}>キャラクターのステータスについて</Text>
               </Box>
               <Text>
@@ -124,10 +122,151 @@ export default function Index() {
               </Text>
               <Box p={2}>
                 <UnorderedList fontSize="sm">
-                  <ListItem>パワー</ListItem>
-                  <ListItem>アドバンスパワー</ListItem>
-                  <ListItem>メモリーのパワー</ListItem>
+                  <ListItem>キャラクターパワー</ListItem>
+                  <ListItem>キャラクターアドバンスパワー</ListItem>
+                  <ListItem>メモリーパワー</ListItem>
                 </UnorderedList>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box pt={4} pb={2}>
+                <Text color={"#F8784A"}>アクションスキルのダメージ率</Text>
+              </Box>
+              <Text>アクションスキルに設定されているダメージの率です。</Text>
+            </Box>
+
+            <Box>
+              <Box pt={4} pb={2}>
+                <Text color={"#F8784A"}>
+                  味方キャラクターに付与されているバフ
+                </Text>
+              </Box>
+              <Text>与ダメージの計算に使用されるバフは以下です。</Text>
+              <Box p={2}>
+                <UnorderedList fontSize="sm">
+                  <ListItem>パワーアップ</ListItem>
+                  <ListItem>スキル威力アップ</ListItem>
+                  <ListItem>アクションスキル威力アップ</ListItem>
+                  <ListItem>クリティカル威力アップ</ListItem>
+                </UnorderedList>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box pt={4} pb={2}>
+                <Text color={"#F8784A"}>
+                  敵キャラクターに付与されているバフ
+                </Text>
+              </Box>
+              <Text>与ダメージの計算に使用されるバフは以下です。</Text>
+              <Box p={2}>
+                <UnorderedList fontSize="sm">
+                  <ListItem>デフェンスアップ</ListItem>
+                  <ListItem>ダメージカット</ListItem>
+                </UnorderedList>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box pt={4} pb={2}>
+                <Text color={"#F8784A"}>
+                  敵キャラクターに付与されているデバフ
+                </Text>
+              </Box>
+              <Text>与ダメージの計算に使用されるデバフは以下です。</Text>
+              <Box p={2}>
+                <UnorderedList fontSize="sm">
+                  <ListItem>デフェンスダウン</ListItem>
+                </UnorderedList>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box pt={4} pb={2}>
+                <Text color={"#F8784A"}>与ダメージの計算式</Text>
+              </Box>
+              <Box pb={2}>
+                <Text>
+                  まずはじめに、パワー合計値を計算します。この値は、ダメージ計算の基礎となる値です。
+                </Text>
+                <Box pt={4} pb={2}>
+                  <Alert status="warning">
+                    <Text>
+                      パワー合計値 = キャラクターパワー +
+                      キャラクターアドバンスパワー + メモリーパワー
+                    </Text>
+                  </Alert>
+                </Box>
+              </Box>
+
+              <Box pb={2}>
+                <Text>
+                  次に通常攻撃の与ダメージを計算します。謎の定数は気にしなくても大丈夫です。
+                </Text>
+                <Box pt={4} pb={2}>
+                  <Alert status="warning">
+                    <Text>
+                      通常攻撃の与ダメージ = パワー合計値 * パワーアップ率 /
+                      (ディフェンスアップ率 + ディフェンスダウン率) *
+                      ダメージカット率 / 謎の定数
+                    </Text>
+                  </Alert>
+                </Box>
+              </Box>
+
+              <Box pb={2}>
+                <Text>
+                  最後にアクションスキル威力の与ダメージを計算します。
+                </Text>
+                <Box pt={4} pb={2}>
+                  <Alert status="warning">
+                    <Text>
+                      アクションスキル威力の与ダメージ = 通常攻撃の与ダメージ *
+                      アクションスキルダメージ率 * スキル威力アップ率 *
+                      アクションスキル威力アップ率
+                    </Text>
+                  </Alert>
+                </Box>
+              </Box>
+
+              <Text>
+                上記の与ダメージ計算の記載に関する注意事項です。一部、わかりやすさを優先して正確ではない記載をしています。需要はないと思いますが、正確な計算式を知りたい方は、お問合せください。
+              </Text>
+            </Box>
+
+            <Box pt={4} pb={2}>
+              <Text>
+                与ダメージの計算式がわかったので、実際に{" "}
+                <Link
+                  color="#FAC00F"
+                  href={"/calculation"}
+                  textDecoration={"underline"}
+                >
+                  与ダメージ計算
+                </Link>{" "}
+                で計算してみましょう。
+              </Text>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box p={2}>
+          <Box>
+            <Box p={2}>
+              <Heading color={"#F8784A"}>各ステータスの確認方法</Heading>
+            </Box>
+          </Box>
+
+          <Box
+            backgroundColor={"blackAlpha.100"}
+            borderColor={"blackAlpha.600"}
+            rounded="lg"
+            p={4}
+          >
+            <Box>
+              <Box pt={1} pb={1}>
+                <Text color={"#F8784A"}>キャラクターのステータスについて</Text>
               </Box>
               <Text>各ステータスは以下の画面から確認することができます。</Text>
               <Box p={4}>
@@ -150,9 +289,7 @@ export default function Index() {
               <Box pt={1} pb={1}>
                 <Text color={"#F8784A"}>アクションスキルのダメージ率</Text>
               </Box>
-              <Text>
-                アクションスキルに設定されているダメージの率です。以下の画面から確認することができます。
-              </Text>
+              <Text>以下の画面から確認することができます。</Text>
               <Box p={4}>
                 <Image src="/images/skill.png" borderRadius="lg" alt="Skill" />
               </Box>
@@ -163,15 +300,6 @@ export default function Index() {
                 <Text color={"#F8784A"}>
                   味方キャラクターに付与されているバフ
                 </Text>
-              </Box>
-              <Text>与ダメージの計算に使用されるバフは以下です。</Text>
-              <Box p={2}>
-                <UnorderedList fontSize="sm">
-                  <ListItem>パワーアップ</ListItem>
-                  <ListItem>スキル威力アップ</ListItem>
-                  <ListItem>アクションスキル威力アップ</ListItem>
-                  <ListItem>クリティカル威力アップ</ListItem>
-                </UnorderedList>
               </Box>
               <Text>
                 適用されている各バフは以下の画面から確認することができます。
@@ -192,14 +320,8 @@ export default function Index() {
                 </Text>
               </Box>
               <Text>
-                与ダメージの計算に使用されるバフは以下です。適用されている各バフは、「味方キャラクターに付与されているバフ」と同じ画面で確認できます。
+                適用されている各バフは、「味方キャラクターに付与されているバフ」と同じ画面で確認できます。
               </Text>
-              <Box p={2}>
-                <UnorderedList fontSize="sm">
-                  <ListItem>デフェンスアップ</ListItem>
-                  <ListItem>ダメージカット</ListItem>
-                </UnorderedList>
-              </Box>
             </Box>
 
             <Box>
@@ -209,73 +331,7 @@ export default function Index() {
                 </Text>
               </Box>
               <Text>
-                与ダメージの計算に使用されるデバフは以下です。適用されている各バフは、「味方キャラクターに付与されているバフ」と同じ画面で確認できます。
-              </Text>
-              <Box p={2}>
-                <UnorderedList fontSize="sm">
-                  <ListItem>デフェンスダウン</ListItem>
-                </UnorderedList>
-              </Box>
-            </Box>
-
-            <Box>
-              <Box pt={2} pb={2}>
-                <Text color={"#F8784A"}>与ダメージの計算式</Text>
-              </Box>
-              <Box pb={2}>
-                <Text>
-                  はじめにパワー合計値を計算します。この値は、ダメージ計算の基礎となる値です。
-                </Text>
-                <Box pt={2} pb={2}>
-                  <Alert status="warning">
-                    <Text>
-                      パワー合計値 = キャラクターパワー +
-                      キャラクターアドバンスパワー + メモリーパワー
-                    </Text>
-                  </Alert>
-                </Box>
-              </Box>
-
-              <Text>
-                次に通常攻撃の与ダメージを計算します。謎の定数は気にしなくても大丈夫です。
-              </Text>
-              <Box pt={2} pb={2}>
-                <Alert status="warning">
-                  <Text>
-                    通常攻撃の与ダメージ = パワー合計値 * パワーアップ /
-                    (ディフェンスアップ + ディフェンスダウン) * (1 -
-                    ダメージカット) / 謎の定数
-                  </Text>
-                </Alert>
-              </Box>
-
-              <Text>最後にアクションスキル威力の与ダメージを計算します。</Text>
-              <Box pt={2} pb={2}>
-                <Alert status="warning">
-                  <Text>
-                    アクションスキル威力の与ダメージ = 通常攻撃の与ダメージ *
-                    アクションスキルダメージ率 * スキル威力アップ *
-                    アクションスキル威力アップ
-                  </Text>
-                </Alert>
-              </Box>
-
-              <Text>
-                上記の与ダメージ計算の記載に関する注意事項です。一部、わかりやすさを優先して正確ではない記載をしています。需要はないと思いますが、正確な計算式を知りたい方は、お問合せください。
-              </Text>
-            </Box>
-
-            <Box pt={2} pb={2}>
-              <Text>
-                与ダメージの計算式がわかったので、実際に{" "}
-                <Link
-                  color="#FAC00F"
-                  href={"/calculation"}
-                  textDecoration={"underline"}
-                >
-                  与ダメージ計算
-                </Link>{" "}
-                で計算してみましょう。
+                適用されている各バフは、「味方キャラクターに付与されているバフ」と同じ画面で確認できます。
               </Text>
             </Box>
           </Box>
